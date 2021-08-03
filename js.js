@@ -3,21 +3,30 @@ const board = document.getElementsByClassName("board")[0];
 const shuffleBtn = document.getElementsByClassName("startOverBtn")[0];
 const cards = document.getElementsByClassName("card");
 // const cards = board.children;
-const result = document.querySelector("p span")
+const result = document.querySelector("p span");
 
-
-let img = ["/asset/img/1.png", "/asset/img/1.png", "/asset/img/2.png", "/asset/img/2.png", "/asset/img/3.png", "/asset/img/3.png", "/asset/img/4.png", "/asset/img/4.png", "/asset/img/5.png", "/asset/img/5.png", "/asset/img/6.png", "/asset/img/6.png"];
+let img = [
+    "/asset/img/1.png",
+    "/asset/img/1.png",
+    "/asset/img/2.png",
+    "/asset/img/2.png",
+    "/asset/img/3.png",
+    "/asset/img/3.png",
+    "/asset/img/4.png",
+    "/asset/img/4.png",
+    "/asset/img/5.png",
+    "/asset/img/5.png",
+    "/asset/img/6.png",
+    "/asset/img/6.png",
+];
 let currCard = [];
 let currId = [];
 let wonCards = [];
 
-
-
 //CREATE BOARD and Shufle CARDS:
 
-
 function createBoard() {
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < img.length; i++) {
         let card = document.createElement("div");
         card.classList.add("card");
         card.setAttribute("id", i);
@@ -45,9 +54,9 @@ function shuffleCard() {
 shuffleBtn.addEventListener("click", shuffleCard);
 
 function flipCard() {
-    currCard.push(img[this.id])
-    currId.push(this.id)
-    this.style.backgroundImage = `url(${img[this.id]})`
+    currCard.push(img[this.id]);
+    currId.push(this.id);
+    this.style.backgroundImage = `url(${img[this.id]})`;
     if (currId.length === 2) {
         setTimeout(compareCards, 500);
     }
@@ -78,7 +87,6 @@ function compareCards() {
     } else {
         cards[sCard[1]].style.backgroundImage = "url(/asset/img/back.png)";
         cards[fCard[1]].style.backgroundImage = "url(/asset/img/back.png)";
-
     }
     currId = [];
     currCard = [];
